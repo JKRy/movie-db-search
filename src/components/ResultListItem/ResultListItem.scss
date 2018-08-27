@@ -3,9 +3,12 @@
 .result-list-item {
   display: flex;
   flex-direction: row;
+  flex-grow: 1;
+  height: 278px;
   margin: 20px;
   background-color: $primary-color;
   color: $color-white;
+  max-width: 750px;
 
   .result-list-item-image {
     width: 185px;
@@ -14,14 +17,17 @@
  
   .result-list-item-info {
     padding: 20px;
+    margin-bottom: 10px;
+    overflow: auto;
 
     .result-list-item-name {
       font-weight: bold;
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 500px) {
     flex-direction: column;
+    height: auto;
 
     .result-list-item-image {
       align-self: center;
