@@ -1,0 +1,30 @@
+@import '../../styles/variables';
+
+.result-list-item {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  background-color: $primary-color;
+  color: $color-white;
+
+  .result-list-item-image {
+    width: 185px;
+    height: 278px;
+  }
+ 
+  .result-list-item-info {
+    padding: 20px;
+
+    .result-list-item-name {
+      font-weight: bold;
+    }
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+
+    .result-list-item-image {
+      align-self: center;
+    }
+  }
+}

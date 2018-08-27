@@ -6,14 +6,14 @@
   flex-wrap: wrap;
   justify-content: center;
 
-  input {
+  .search-bar-input {
     flex-grow: 1;
     font-size: 1rem;
     line-height: 1rem;
     padding: 10px;
   }
 
-  button {
+  .search-bar-button {
     background-color: $primary-button-background;
     border: none;
     color: $primary-button-color;

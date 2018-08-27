@@ -15,7 +15,7 @@ describe('SearchBar', () => {
   });
 
   test('should render SearchBar without crashing', () => {
-    expect(wrapper.hasClass('search-bar')).toBeTruthy;
+    expect(wrapper.hasClass('search-bar')).toBeTruthy();
   });
 
   test('should update searchTerm on change', () => {

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-// Components
 import SearchBar from '../SearchBar';
+import ResultList from '../ResultList';
 
-// Utils
 import { getSearchResults } from '../../utils/api';
 
 import styles from './App.scss';
@@ -14,7 +13,7 @@ interface State {
   hasError: boolean;
 }
 
-export default class App extends Component<{}, State> {
+class App extends Component<{}, State> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -47,7 +46,7 @@ export default class App extends Component<{}, State> {
         {
           isLoading
           ? <div>Loading...</div>
-          : <div>ResultList Placeholder</div>
+          : <ResultList results={results} />
         }
         {
           hasError && <div>An error has occured...</div>
@@ -56,3 +55,5 @@ export default class App extends Component<{}, State> {
     );
   }
 }
+
+export default App;

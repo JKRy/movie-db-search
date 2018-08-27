@@ -19,7 +19,7 @@ describe('App', () => {
   });
 
   test('should render the SearchBar component', () => {
-    expect(wrapper.find(SearchBar)).toBeTruthy;
+    expect(wrapper.find(SearchBar)).toBeTruthy();
   });
 
   describe('searchForResults', () => {
@@ -31,7 +31,7 @@ describe('App', () => {
       wrapper.instance().searchForResults('ryan');
 
       setImmediate(() => {
-        expect(mockAxios.get).toHaveBeenCalled;
+        expect(mockAxios.get).toHaveBeenCalled();
         expect(wrapper.state()).toMatchObject({
           isLoading: false,
           hasError: false,
@@ -49,7 +49,7 @@ describe('App', () => {
       wrapper.instance().searchForResults('ryan');
 
       setImmediate(() => {
-        expect(mockAxios.get).toHaveBeenCalled;
+        expect(mockAxios.get).toHaveBeenCalled();
         expect(wrapper.state()).toMatchObject({
           isLoading: false,
           hasError: true,

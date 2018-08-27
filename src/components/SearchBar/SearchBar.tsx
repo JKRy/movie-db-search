@@ -10,7 +10,7 @@ interface State {
   searchTerm: string;
 }
 
-export default class SearchBar extends Component<Props, State> {
+class SearchBar extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -37,11 +37,13 @@ export default class SearchBar extends Component<Props, State> {
         onSubmit={this.handleSubmit}
       >
         <input
+          className={styles['search-bar-input']}
           value={this.state.searchTerm}
           onChange={this.handleInputChange}
           placeholder="Search for a movie, person or tv show"
         />
         <button
+          className={styles['search-bar-button']}
           type="submit"
         >
           Search
@@ -50,3 +52,5 @@ export default class SearchBar extends Component<Props, State> {
     );
   }
 }
+
+export default SearchBar;
