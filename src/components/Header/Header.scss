@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+
+.header {
+  display: flex;
+  flex-direction: row;
+  background-color: $header-background-color;
+  margin-bottom: 20px;
+
+  .logo {
+    align-self: center;
+  }
+
+  h1 {
+    flex-grow: 1;
+    text-align: center;
+  }
+}

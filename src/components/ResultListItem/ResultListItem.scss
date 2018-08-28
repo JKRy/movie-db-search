@@ -1,24 +1,24 @@
 @import '../../styles/variables';
 
 .result-list-item {
+  background-color: $result-list-item-background-color;
+  color: $result-list-item-color;
   display: flex;
   flex-direction: row;
   flex-grow: 1;
   height: 278px;
   margin: 20px;
-  background-color: $primary-color;
-  color: $color-white;
   max-width: 750px;
 
   .result-list-item-image {
-    width: 185px;
     height: 278px;
+    width: 185px;
   }
  
   .result-list-item-info {
-    padding: 20px;
     margin-bottom: 10px;
     overflow: auto;
+    padding: 20px;
 
     .result-list-item-name {
       font-weight: bold;

@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+
+html,
+body {
+  font-family: 'Arial';
+  font-size: 18px;
+  margin: 0;
+}
+
+button {
+  background-color: $primary-button-background;
+  border: none;
+  color: $primary-button-color;
+  padding: 10px 15px;
+}
+
+h1 {
+  color: $secondary-color;
+}

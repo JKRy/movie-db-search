@@ -6,6 +6,8 @@ import { expectedApiResponse, expectedResults } from './testData';
 
 import App from './App';
 import SearchBar from '../SearchBar';
+import Header from '../Header';
+import Footer from '../Footer';
 
 describe('App', () => {
   let wrapper;
@@ -20,6 +22,14 @@ describe('App', () => {
 
   test('should render the SearchBar component', () => {
     expect(wrapper.find(SearchBar)).toBeTruthy();
+  });
+
+  test('should render the Header component', () => {
+    expect(wrapper.find(Header)).toBeTruthy();
+  });
+
+  test('should render the Footer component', () => {
+    expect(wrapper.find(Footer)).toBeTruthy();
   });
 
   describe('searchForResults', () => {

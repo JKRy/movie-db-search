@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
+import Header from '../Header';
 import SearchBar from '../SearchBar';
 import ResultList from '../ResultList';
+import Footer from '../Footer';
 
 import { getSearchResults } from '../../utils/api';
 
@@ -42,6 +44,7 @@ class App extends Component<{}, State> {
 
     return (
       <div className={styles.app}>
+        <Header />
         <SearchBar onSubmit={this.searchForResults} />
         {
           isLoading
@@ -51,6 +54,7 @@ class App extends Component<{}, State> {
         {
           hasError && <div>An error has occured...</div>
         }
+        <Footer />
       </div>
     );
   }

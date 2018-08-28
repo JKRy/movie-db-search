@@ -39,7 +39,8 @@
       "**/**/*.test.(ts|tsx|js)"
     ],
     "moduleNameMapper": {
-      "\\.(scss)$": "identity-obj-proxy"
+      "\\.(scss)$": "identity-obj-proxy",
+      "\\.(png)$": "<rootDir>/src/__mocks__/fileMock.ts"
     }
   },
   "dependencies": {
