@@ -1,5 +1,6 @@
 # movie-db-search
-A React UI to search The Movie DB
+A React UI to search The Movie DB.
+Built using Parcel, React and Typescript.
 
 ## Prerequisites to run the code
 ```
@@ -9,8 +10,11 @@ yarn
 
 ## Generate an API_KEY
 This code base makes use of a .env file - this file contains the API_KEY required to make API requests.
-In order to run the app and successfully make API requests to The Movie DB, you will need to generate an API_KEY by following the steps outlined [here](https://developers.themoviedb.org/3/getting-started/introduction).
+In order to run the app and successfully make API requests to The Movie DB, you will need to generate an API_KEY by following the steps outlined [here](https://developers.themoviedb.org/3/getting-started/introduction) and place the following into a `.env` file at the root directory.
 
+```
+API_KEY=00000000000000000000000000000000
+```
 
 ## Installation
 Install dependencies
