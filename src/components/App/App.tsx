@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Header from '../Header';
 import SearchBar from '../SearchBar';
@@ -9,55 +9,51 @@ import { getSearchResults } from '../../utils/api';
 
 import styles from './App.scss';
 
-interface State {
-  results: [];
-  isLoading: boolean;
-  hasError: boolean;
-}
+const App = () => {
+  const [hasError, setHasError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [results, setResults] = useState<[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>('kate');
 
-class App extends Component<{}, State> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      results: [],
-      isLoading: false,
-      hasError: false,
-    };
+  useEffect(() => {
+    console.log('useEffect called', searchTerm);
+    try {
+      setIsLoading(true);
+
+      const fetchData = async () => {
+        const results = await getSearchResults(searchTerm);
+        setResults(results.data.results);
+      };
+
+      fetchData();
+
+      setIsLoading(false);
+
+    } catch (e) {
+      setHasError(true);
+      console.error(e);
+    }
+  }, [searchTerm]);
+
+  function handleSubmit(value: string) {
+    setSearchTerm(value);
   }
 
-  searchForResults = (searchTerm: string) => {
-    this.setState({ isLoading: true });
-
-    getSearchResults(searchTerm)
-      .then((response) => {
-        const { results } = response.data;
-        this.setState({ results, isLoading: false });
-      })
-      .catch((e) => {
-        this.setState({ isLoading: false, hasError: true });
-        console.error(e);
-      });
-  }
-
-  render() {
-    const { hasError, isLoading, results } = this.state;
-
-    return (
-      <div className={styles.app}>
-        <Header />
-        <SearchBar onSubmit={this.searchForResults} />
-        {
-          isLoading
+  return (
+    <div className={styles.app}>
+      <Header />
+      <SearchBar onSubmit={handleSubmit} />
+      {
+        isLoading
           ? <div>Loading...</div>
           : <ResultList results={results} />
-        }
-        {
-          hasError && <div>An error has occured...</div>
-        }
-        <Footer />
-      </div>
-    );
-  }
+      }
+      {
+        hasError && <div>An error has occured...</div>
+      }
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
