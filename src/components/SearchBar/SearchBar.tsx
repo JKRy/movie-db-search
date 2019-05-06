@@ -9,15 +9,24 @@ interface Props {
 const SearchBar = ({ onSubmit }: Props) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearchTerm(e.target.value);
+  }
+
+  function handleSubmit(e: React.SyntheticEvent) {
+    e.preventDefault();
+    onSubmit(searchTerm);
+  }
+
   return (
     <form
       className={styles['search-bar']}
-      onSubmit={() => onSubmit(searchTerm)}
+      onSubmit={handleSubmit}
     >
       <input
         className={styles['search-bar-input']}
         value={searchTerm}
-        onChange={event => setSearchTerm(event.target.value)}
+        onChange={handleChange}
         placeholder="Search for a movie, person or tv show"
       />
       <button

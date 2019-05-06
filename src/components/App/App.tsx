@@ -13,31 +13,19 @@ const App = () => {
   const [hasError, setHasError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [results, setResults] = useState<[]>([]);
-  const [searchTerm, setSearchTerm] = useState<string>('kate');
 
-  useEffect(() => {
-    console.log('useEffect called', searchTerm);
+  const handleSubmit = async (searchTerm: string) => {
     try {
       setIsLoading(true);
-
-      const fetchData = async () => {
-        const results = await getSearchResults(searchTerm);
-        setResults(results.data.results);
-      };
-
-      fetchData();
-
-      setIsLoading(false);
-
+      const results = await getSearchResults(searchTerm);
+      setResults(results.data.results);
     } catch (e) {
       setHasError(true);
       console.error(e);
+    } finally {
+      setIsLoading(false);
     }
-  }, [searchTerm]);
-
-  function handleSubmit(value: string) {
-    setSearchTerm(value);
-  }
+  };
 
   return (
     <div className={styles.app}>
