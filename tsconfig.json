@@ -1,16 +1,13 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "target": "es5",
-    "module": "commonjs",
-    "strict": true,
-    "jsx": "react",
-    "experimentalDecorators": true,
-    "lib": ["dom", "es2015"],
-    "esModuleInterop": true
-  },
-  "exclude": [
-    "node_modules",
-    "jest"
-  ]
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "target": "es5",
+        "module": "commonjs",
+        "strict": true,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "lib": ["dom", "es2015"],
+        "esModuleInterop": true
+    },
+    "exclude": ["node_modules"]
 }

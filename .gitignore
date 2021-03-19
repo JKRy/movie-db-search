@@ -2,4 +2,8 @@
 .env
 
 .cache
+.parcel-cache
 /dist
+
+# types
+*.scss.d.ts

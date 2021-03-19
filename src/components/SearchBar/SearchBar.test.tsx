@@ -1,43 +1,36 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {render, screen} from '@testing-library/react';
+import userEvent, {specialChars} from '@testing-library/user-event';
 
 import SearchBar from './SearchBar';
 
 const props = {
-  onSubmit: jest.fn(),
+    onSubmit: jest.fn()
 };
 
 describe('SearchBar', () => {
-  let wrapper;
+    test('should update searchTerm on change', () => {
+        render(<SearchBar {...props} />);
+        userEvent.type(screen.getByRole('textbox'), 'Hello, World!');
 
-  beforeEach(() => {
-    wrapper = shallow(<SearchBar {...props} />);
-  });
+        expect(screen.getByRole('textbox')).toHaveValue('Hello, World!');
+    });
 
-  test('should render SearchBar without crashing', () => {
-    expect(wrapper.hasClass('search-bar')).toBeTruthy();
-  });
+    test('should call onSubmit when the search button is clicked', () => {
+        render(<SearchBar {...props} />);
 
-  test('should update searchTerm on change', () => {
-    const e = { target: { value: 'testTerm' } };
-    wrapper.find('input').simulate('change', e);
+        userEvent.type(screen.getByRole('textbox'), 'testTerm');
+        userEvent.click(screen.getByRole('button'));
 
-    expect(wrapper.state()).toEqual({ searchTerm: 'testTerm' });
-  });
+        expect(props.onSubmit).toHaveBeenCalledWith('testTerm');
+    });
 
-  test('should call onSubmit when the form is submitted', () => {
-    const e = { preventDefault: () => {} };
-    wrapper.setState({ searchTerm: 'testTerm' });
-    wrapper.find('form').simulate('submit', e);
+    test('should call onSubmit when the form is submitted', () => {
+        render(<SearchBar {...props} />);
 
-    expect(props.onSubmit).toHaveBeenCalledWith('testTerm');
-  });
+        userEvent.type(screen.getByRole('textbox'), 'testTermSubmit');
+        userEvent.type(screen.getByRole('textbox'), '{enter}');
 
-  test('should call onSubmit when the search button is clicked', () => {
-    const e = { preventDefault: () => {} };
-    wrapper.setState({ searchTerm: 'testTerm' });
-    wrapper.find('button').simulate('click', e);
-
-    expect(props.onSubmit).toHaveBeenCalledWith('testTerm');
-  });
+        expect(props.onSubmit).toHaveBeenCalledWith('testTermSubmit');
+    });
 });

@@ -1,16 +1,15 @@
-import axios, { AxiosPromise } from 'axios';
-
 const API_KEY = process.env.API_KEY;
-const baseUrl = 'https://api.themoviedb.org/3/search/multi';
+const baseUrl = 'https://api.themoviedb.org/4/search/multi';
 
-export const getSearchResults = (searchTerm: string): AxiosPromise => (
-  axios.get(
-    `${baseUrl}`,
-    {
-      params: {
-        api_key: API_KEY,
-        query: searchTerm,
-      },
-    },
-  )
-);
+export const getSearchResults = async (searchTerm: string): Promise<any> => {
+    const response = await fetch(`${baseUrl}?query=${searchTerm}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${API_KEY}`
+        }
+    });
+
+    if (!response.ok) throw new Error('Error in search results response');
+
+    return await response.json();
+};

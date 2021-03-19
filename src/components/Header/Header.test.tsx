@@ -1,16 +1,16 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {render, screen} from '@testing-library/react';
 
 import Header from './Header';
 
 describe('Header', () => {
-  test('should render Header without crashing', () => {
-    const wrapper = shallow(<Header />);
-    expect(wrapper.type()).toEqual('header');
-  });
+    test('should render Header without crashing', () => {
+        render(<Header />);
+        screen.getByRole('heading');
+    });
 
-  test('should render a logo image', () => {
-    const wrapper = shallow(<Header />);
-    expect(wrapper.find('img')).toBeDefined();
-  });
+    test('should render a logo image', () => {
+        render(<Header />);
+        screen.getByAltText('Logo');
+    });
 });
